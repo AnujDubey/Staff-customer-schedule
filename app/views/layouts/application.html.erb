@@ -1,0 +1,34 @@
+
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <title>DummyProject</title>
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+    <%= csrf_meta_tags %>
+  </head>
+
+  <!-- Body for the application -->
+  <body>
+    <div class="application-header">
+      <span id="application_heading">Staff-Customer Time Schedule</span>
+      <span id="user_nav">
+        <% if user_signed_in? %>
+          <!--div>Signed in as <%= current_user.email %></div-->
+          <div class="signed-out">
+            <span>Hello <%= current_user.firstname %>&nbsp;&nbsp;&nbsp;</span>
+            <span><%= link_to "Sign out", destroy_user_session_path, :method=>'delete'%></span>
+          </div>
+        <% end %>
+      </span>
+    </div>
+    
+
+    <!-- Notice and alert section -->
+    <div class="notice"><%= notice %></div>
+    <div class="alert"><%= alert %></div>
+    <%= yield %>
+  </body>
+
+</html>

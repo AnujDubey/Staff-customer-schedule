@@ -1,0 +1,26 @@
+
+<!-- Showing the names of staffs also the active and inactive one  -->
+	<div id='all_customers'>
+		<h3>All Customer : </h3>
+		<div class = "info-table">
+			<table class="table table-condensed table hover customer-table">
+				<tr>
+					<th>Firstname</th>
+					<th>Lastname</th>
+					<th>Email</th>
+					<th>Delete</th>
+				</tr>
+				<% count = 0 %>
+				<% @customers.each do |x| %>
+						<tr class = "active"> 
+							<td><%= x.firstname %></td>
+							<td><%= x.lastname %></td>
+							<td><%= x.email %></td> 
+		      				<td><%= link_to "Remove", {:controller => :admins,
+		      										 :action => 'destroy', :id => @customers[count][:id] }, :remote =>true, :method => :delete, date: {confirm: "Are you sure?" }, class: 'btn btn-info' %></td>
+		      			</tr>  
+						<% count = count + 1 %>
+				<% end %>
+			</table>
+		</div>
+	</div>

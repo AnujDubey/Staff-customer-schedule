@@ -1,0 +1,50 @@
+<div class="login-role">
+      <h3><%= link_to "Admin Login", profile_admins_path, class: 'no-style' %> </h3>
+</div>
+<div class="main-body">
+    <div><%= link_to "Add Staff", new_user_path, class: 'left-admin-btn btn btn-info'  %></div>
+    <div>
+      <%= link_to "Customer", show_customers_admins_path ,:remote => true, class: 'left-admin-btn btn btn-info' %>
+    </div>
+    <div>
+      <%= link_to "Staff", show_staffs_admins_path, :remote => true, class: 'left-admin-btn btn btn-info' %>
+    </div>
+</div>
+<div class="replacing_div">
+  <!-- New Staff Registration Page Filled By Admin -->
+  <div class="new-staff">
+     <div class="new-staff-inner">
+  	   <h2>Add Staff</h2>
+        <!-- Form for the regestration and in label tag showing errors -->
+        <%= form_for @staff, url: users_path(@staff) do |f| %>
+          <div>
+          	<%= f.label :firstname %><br />
+          	<%= f.text_field :firstname  %>
+            <label> 
+              <%= @staff.errors.messages[:firstname][0] if @staff.errors.messages[:firstname].present? %> 
+            </label>
+          </div>
+
+          <div>
+          	<%= f.label :lastname %><br />
+          	<%= f.text_field :lastname  %>
+            <label> 
+              <%= @staff.errors.messages[:lastname][0] if @staff.errors.messages[:lastname].present? %>
+            </label>
+          </div>
+
+          <div><%= f.label :email %><br />
+           <%= f.email_field :email, autofocus: true %> 
+           <label> 
+            <%= @staff.errors.messages[:email][0] if @staff.errors.messages[:email].present? %> 
+           </label>
+          </div>
+         
+          <div>
+            <%= f.submit "Create Staff" ,class: 'btn btn-small btn-success'%>
+          </div>
+        <% end %>
+     </div>
+    <div class ="back-to-admin"><%= link_to "Back", profile_admins_path %></div>
+  </div>
+</div>

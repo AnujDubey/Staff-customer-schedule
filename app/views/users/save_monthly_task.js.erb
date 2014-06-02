@@ -1,0 +1,12 @@
+
+
+ <% if @task.errors.present? %>
+
+$("#event_error").css("display", "block");
+
+ <% else %>
+
+ location.reload();
+
+
+ <% end %>

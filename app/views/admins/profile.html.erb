@@ -1,0 +1,22 @@
+<div class="login-role">
+      <h3><%= link_to "Admin Login",'#', class: 'no-style' %> </h3>
+</div>
+	<div class="main-body">
+			<div><%= link_to "Add Staff", new_user_path, class: 'left-admin-btn btn btn-info'  %></div>
+			<div><%= link_to "Customer", show_customers_admins_path , :remote =>true, class: 'left-admin-btn btn btn-info' %></div>
+			<div><%= link_to "Staff", show_staffs_admins_path, :remote =>true, class: 'left-admin-btn btn btn-info' %></div>
+	</div>
+<div class="admins-profile replacing_div">
+	<div class="admins-inner-profile">
+		<h3>Admin Profile</h3>
+		<table class="table table-hover table-small">
+			<tr><th>Name</th> 
+				<td><%= " " + @admin[:firstname].capitalize + " " + @admin[:lastname].capitalize %></td></tr>
+			<tr><th>Email Id</th>  
+				<td> <%= " " + @admin[:email].downcase %></td></tr>
+			<tr><th>Signed in</th> <td> <%= " " + @admin[:sign_in_count].to_s  %> times</td></tr>
+			<tr><th>Last Signed in</th><td><%= @date + ", " + @time %></td></tr>
+		</table>
+		<div><%= link_to "Change Password", edit_user_registration_path, class: 'btn btn-primary change-password-btn' %></div>
+	</div>
+</div>

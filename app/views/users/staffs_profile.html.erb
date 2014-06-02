@@ -1,0 +1,92 @@
+<!-- Staff's Profile Page -->
+ <body>
+    <div class="login-role">
+      <h3> Staff Login </h3>
+    </div>
+
+    <!-- Calender Division -->
+    <div class="staff-body"></div>
+    <div id="myModal" class="modal fade">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+              <h4 class="modal-title">Create Event</h4>
+              <em id="event_error"> Invalid event time entered </em>
+            </div>
+            <div class="modal-body">
+
+              <%= form_for @event, url: '/users/save_monthly_task/', :remote => true do |event| %>
+                <div>
+                 <%= label_tag "Enter Event name "  %>
+                  <%= event.text_field :event, autofocus: true %>
+                </div>
+                <div>
+                  <%= label_tag "Select Event Start Time (24 hour format) "  %>
+                  <%= event.select :start_hour, 8..18 %>
+                  <%= event.select :start_minute, 0..59 %>
+                </div>
+                <div>
+                  <%= label_tag "Enter End Time (24 hour format)"  %>
+                  <%= event.select :end_hour, 8..18 %>
+                  <%= event.select :end_minute, 0..59 %>
+                </div>
+                <%= hidden_field_tag :start_year %>
+                <%= hidden_field_tag :end_year %>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                  <%= event.submit 'Create Event', class: "btn btn-primary"%>
+                </div>
+              <% end %>
+            </div>
+          </div>
+      </div>
+    </div>
+    <div id='calendar', class = "default-hidden"></div>
+    <div class = "left-aligned">
+      <div><%= submit_tag "Meetings", :onclick => "staffMeetingDiv()", class: 'left-div-staff btn btn-info' %>
+      </div>
+      <div><%= submit_tag "Schedule", :onclick => "staffScheduleDiv()", class: 'left-div-staff btn btn-info' %>
+      </div>
+      <div><%= submit_tag "Profile", :onclick => "staffProfileDiv()", class: 'left-div-staff btn btn-info' %>
+      </div>
+
+      <div class="staff-info">
+          <h3>Staff Profile</h3>
+          <table class="table table-hover table-small">
+            <tr><th>Name</th> 
+              <td><%= " " + @user[:firstname].capitalize + " " + @user[:lastname].capitalize %></td></tr>
+            <tr><th>Email Id</th>  
+              <td> <%= " " + @user[:email].downcase %></td></tr>
+            <tr><th>Signed in</th> <td> <%= " " + @user[:sign_in_count].to_s  %> times</td></tr>
+            <tr><th>Last Signed in</th><td><%= @date + ", " + @time %></td></tr>
+          </table>
+          <div><%= link_to "Change Password", edit_user_registration_path, class: 'btn btn-primary change-password-btn' %></div>
+      </div>
+      <div class = "left-meeting-div default-hidden">
+        <div id="meetings">
+          <% if @my_appointments.blank? %>
+            No Meeting.
+          <% else %>
+            <% count = 0 %>
+            <h3>Meetings</h3> 
+            <table class="table table-hover table-small">
+              <tr>
+                <th>Custome name</th>
+                <th>Event</th>
+                <th>Date</th>
+              </tr>
+              <% @customers_name_for_appointment.each do |i| %>
+                <tr><td><%= i[:customers_name] %></td>
+                    <td><%= @Events[count][:event_name] %></td>
+                    <td><%= @start_day[count][:start]%></td>
+                </tr>
+                <% count = count + 1 %>
+              <% end %>
+          <% end %>
+        </div>
+      </div>
+    </div>
+    
+      
+ </body>

@@ -1,0 +1,9 @@
+<div class="login-role">
+      <h3><%= link_to "Admin Login",'#', class: 'no-style' %> </h3>
+</div>
+	<div class="main-body">
+			<div><%= link_to "Add Staff", new_user_path, class: 'left-admin-btn btn btn-info'  %></div>
+			<div><%= link_to "Customer", show_customers_admins_path , :remote =>true, class: 'left-admin-btn btn btn-info' %></div>
+			<div><%= link_to "Staff", show_staffs_admins_path, :remote =>true, class: 'left-admin-btn btn btn-info' %></div>
+	</div>
+<%= render 'admins/show_all_staffs' %>

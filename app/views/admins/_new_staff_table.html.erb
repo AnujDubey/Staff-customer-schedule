@@ -1,0 +1,20 @@
+<table class="table table-condensed table hover new-staff-table">
+		<tr>
+			<th>Firstname</th>
+			<th>Lastname</th>
+			<th>Email</th>
+			<th>Delete</th>
+		</tr>
+		<% count = 0 %>
+		<% @staffs. each do |x| %>
+			<tr class= <%=  x.confirmed_at.present? ? "active" : "inactive" %> > 
+				<td><%= x.firstname %></td> 
+				<td><%= x.lastname %> </td>
+				<td><%= x.email %></td>
+				<td><%= link_to "Remove", {:controller => :admins,
+      										 :action => 'destroy', :id => @staffs[count][:id] }, :remote =>true, :method => :delete,confirm: "Are you sure?", class: 'btn btn-info' %></td>
+			</tr>
+		<% count = count + 1 %>
+		
+		<% end %>
+</table>

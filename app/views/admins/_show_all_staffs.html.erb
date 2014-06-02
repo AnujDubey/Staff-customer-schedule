@@ -1,0 +1,27 @@
+
+<!-- Showing the names of staffs also the active and inactive one -->
+	<div id="all_staffs">
+		<h3>All Staffs :</h3>
+		<div class = "info-table">
+			<table class="table table-condensed table hover staff-table">
+				<tr>
+				<th>Firstname</th>
+				<th>Lastname</th>
+				<th>Email</th>
+				<th>Delete</th>
+				</tr>
+				<% count = 0 %>
+				<% @staffs. each do |x| %>
+					<tr class= <%=  x.confirmed_at.present? ? "active" : "inactive" %> > 
+						<td><%= x.firstname %></td> 
+						<td><%= x.lastname %> </td>
+						<td><%= x.email %></td>
+						<td><%= link_to "Remove", {:controller => :admins,
+		      					:action => 'destroy', :id => @staffs[count][:id] }, :method => :delete, confirm: "Are you sure?", :remote => true, class: 'btn btn-info' %></td>
+					</tr>
+				<% count = count + 1 %>
+				
+				<% end %>
+			</table>
+		</div>
+	</div>

@@ -1,0 +1,40 @@
+
+<div id="signinpage">
+  <div class="inner-signin-div">
+    <h2>Sign in</h2>
+    <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+        <div><%= f.label :email %><br />
+          <%= f.email_field :email, autofocus: true %>
+          <label>
+            
+          </label>
+        </div>
+
+        <div><%= f.label :password %><br />
+          <%= f.password_field :password, autocomplete: "on" %>
+          <label>
+              <%= resource.errors.messages[:password][0] if resource.errors.messages[:password].present? %>
+          </label>
+        </div>
+
+        <% if devise_mapping.rememberable? -%>
+            <div><%= f.check_box :remember_me %> <%= f.label :remember_me %></div>
+        <% end -%>
+
+        <div>
+          <div>
+            <%= f.submit "Sign in", class: 'btn btn-small btn-success'%>
+          </div>
+
+          <div class = "forgot_password">
+            <%- if devise_mapping.recoverable? && controller_name != 'passwords' && controller_name != 'registrations' %>
+                <%= link_to "Forgot your password?", new_password_path(resource_name) %>
+            <% end -%>
+          </div>
+
+        </div>
+    <% end %>
+
+    <div class = "signup_links"><%= render "devise/shared/links" %></div>
+  </div>
+</div>

@@ -1,0 +1,56 @@
+<div id="signuppage">
+  <div class="inner-signin-div">
+    <h2>Sign up</h2>
+    <div>
+      <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+          <%#= devise_error_messages! %>
+          <div>
+            <%= f.label :firstname %><br />
+            <%= f.text_field :firstname  %>
+            <label>
+              <%= resource.errors.messages[:firstname][0] if resource.errors.messages[:firstname].present? %>
+            </label>
+          </div>
+
+          <div>
+            <%= f.label :lastname %><br />
+            <%= f.text_field :lastname  %>
+            <label>
+              <%= resource.errors.messages[:lastname][0] if resource.errors.messages[:lastmname].present? %>
+            </label>
+          </div>
+
+
+          <div><%= f.label :email %><br />
+            <%= f.email_field :email, autofocus: true %>
+            <label>
+              <%= resource.errors.messages[:email][0] if resource.errors.messages[:email].present? %>
+            </label>
+          </div>
+
+          <div>
+            <%= f.label :password %><br />
+            <%= f.password_field :password, autocomplete: "off" %>
+            <label>
+              <%= resource.errors.messages[:password][0] if resource.errors.messages[:password].present? %>
+            </label>
+          </div>
+
+          <div>
+            <%= f.label :password_confirmation %><br />
+            <%= f.password_field :password_confirmation, autocomplete: "off" %>
+          </div>
+
+          <div>
+            <%= f.submit "Sign up", class: 'btn btn-small btn-success formargin' %>
+          </div>
+          <div class = "sign-in-link">
+            <%= link_to "Sign in", new_session_path(resource_name) %><br />
+          </div>
+          <div class="shared-links">
+            <%= render "devise/shared/links" %>
+          </div>
+      <% end %>
+    </div>
+
+  </div>

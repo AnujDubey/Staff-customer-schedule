@@ -1,0 +1,65 @@
+<!-- Customer's Profile Page -->
+<div class="login-role">
+  <h3>Customer login.</h3>
+</div>
+<div class="staff-body">
+</div> 
+<div class = "left-aligned">
+    <div><%= submit_tag "Appointments", :onclick => "customerAppointmentDiv()", class: 'left-div-staff btn btn-info' %>
+    </div>
+    <div><%= submit_tag "Schedule", :onclick => "customerScheduleDiv()", class: 'left-div-staff btn btn-info' %>
+    </div>
+    <div><%= submit_tag "Profile", :onclick => "customerProfileDiv()", class: 'left-div-staff btn btn-info' %>
+    </div>
+    <div class="staff-dropdown default-hidden">
+       <h3> Staff.</h3>
+        <%= select("post", "customer_id",@my_staffs, {prompt: 'Select staff'}) %>
+    </div>
+    <div class="customer-info">
+        <h3>Customer Profile</h3>
+        <table class="table table-hover table-small">
+          <tr><th>Name</th> 
+            <td><%= " " + @user[:firstname].capitalize + " " + @user[:lastname].capitalize %></td></tr>
+          <tr><th>Email Id</th>  
+            <td> <%= " " + @user[:email].downcase %></td></tr>
+          <tr><th>Signed in</th> <td> <%= " " + @user[:sign_in_count].to_s  %> times</td></tr>
+          <tr><th>Last Signed in</th><td><%= @last_date + ", " + @last_time %></td></tr>
+        </table>
+        <div><%= link_to "Change Password", edit_user_registration_path, class: 'btn btn-primary change-password-btn' %></div>
+    </div>
+</div>
+<div class = "main-customer-body">
+  <div class = "customer-inner-div">
+    <div class = "customer-appointment-div default-hidden">
+            <div id="appointments">
+                <% if @my_appointments.blank? %>
+                  No Appointment.
+                <% else %>
+                  <% count = 0 %>
+                  <h4>Appointments:</h4> 
+                  <table class="table table-hover table-small">
+                    <tr>
+                      <th>Staff Name</th>
+                      <th>Event</th>
+                      <th>Date</th>
+                      <th>Delete</th>
+                    </tr> 
+                    <% @staffs_name_for_appointment.each do |i| %>
+                      <tr>
+                        <td><%= i[:staff_name] %></td>
+                        <td><%= @Events[count][:event_name] %></td> 
+                        <td><%= @start_day[count][:start] %></td>
+                        <td><%= button_to "Cancel", {:controller => :users,
+                                           :action => 'destroy', :id => @staffs_name_for_appointment[count][:id], data: { confirm: "Are you sure?" }}, :method => :delete, id: 'Cancel' %></td>
+                      </tr>
+                      <% count = count + 1 %>
+                    <% end %>
+                  </table>
+                <% end %>
+            </div>
+    </div>
+    <!-- Calender in the Customer profile -->
+    <div id='calendar_customer', class= 'default-hidden' ></div>  
+  </div>
+  <!-- Dropdown to select the staffs -->
+</div> 

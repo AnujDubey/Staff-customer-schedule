@@ -1,0 +1,6 @@
+console.log('Destroy');
+<% if @staff == false %>
+ 	$(".customer-table").html("<%= escape_javascript(render 'admins/new_customer_table') %>");
+<% else %>
+	$(".staff-table").html("<%= escape_javascript(render 'admins/new_staff_table') %>");
+<% end %>

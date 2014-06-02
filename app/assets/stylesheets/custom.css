@@ -1,0 +1,419 @@
+/* ---------Application common design--------- */
+body{
+    line-height: 1.200;
+    background-color: #FEF6E4;
+}
+.header{
+    margin-left:30%;
+}
+.application-header{
+    height: 77px;
+    background-color: #C0C0C0;
+}
+.home-image{
+    margin-left:15%;
+}
+.link-to-login{
+    margin-left:45%;
+}
+
+/* ---------Signup and Signin page--------- */
+#signinpage, .new-staff, .change-password {
+    background-color: #FEFFEF;
+    border: medium solid #FEFFEF;
+    border-radius: 20px;
+    box-shadow: 50px 50px 50px #888888;
+    margin-left: 33%;
+    width: 32%;
+    height:50%;
+}
+#signuppage{
+    background-color: #FEFFEF;
+    border: medium solid #FEFFEF;
+    border-radius: 20px;
+    box-shadow: 20px 20px 40px #888888;
+    margin-left: 33%;
+    width: 32%;
+    height:700px;
+    margin-bottom:50px;
+}
+.inner-signin-div{
+    margin-left:14%;
+    font-family: calibri;
+}
+.sign-in-link > a {
+    font-size: 16px;
+}
+.new_user{
+    height:180px;
+    margin-bottom:73px;
+}
+#user_email, #user_password, #user_password_confirmation{
+    width:77%;
+    height: 44px;
+    padding: 0 15px;
+    width: 77%;
+    margin-bottom:20px;
+    border-radius:5px;
+}
+a{
+    font-size: 22px;
+    margin-top: 2px;
+}
+.alert{
+    margin-bottom:5px;
+    font-size: 20px;
+    border: 1px solid rgba(0,0,0,0);
+    padding:7px;
+    width:400px;
+}
+#user_nav {
+    float: right;
+    font-size: 18px;
+    margin: 30px;
+}
+.notice {
+    float: left;
+    font-size: 20px;
+    margin-bottom: 5px;
+    width: 1060px;
+}
+.formargin{
+    margin-bottom:8px;
+}
+
+/* ---------Admin Profile--------- */
+#createstaffByAdmin{
+    margin-left:300px;
+}
+#application_heading{
+    font-weight: bold;
+    margin-left: 1%;
+    padding-top: 2%;
+    text-transform: uppercase;
+    text-shadow: 0px 1px 1px #4d4d4d;
+    color: #222;
+    font: 24px 'LeagueGothicRegular';
+    position: absolute;
+}
+.login-role {
+    background-color: #4682B4;
+    float: left;
+    width: 100%;
+    margin-top: -3%;
+}
+.main-body {
+    background-color: #C5EFF7;
+    float: left;
+    font-size: 20px;
+    width: 171px;
+    height: 540px;
+}
+#user_firstname, #user_lastname {
+    border-radius: 5px;
+    height: 44px;
+    margin-bottom: 20px;
+    padding: 0 15px;
+    width: 77%;
+}
+.active{
+    /*color: green;*/
+}
+.inactive{
+    /*color: red;*/
+}
+.sign-in-link{
+    margin-top: 7%;
+}
+.shared-links a{
+    font-size:16px;
+}
+.center-div{
+    margin-left: 0%;
+    font-size: 20px;
+}
+#all_staffs{
+    float: left;
+    font-size: 1.2em;
+    width: 40%;
+    padding-left:2%;
+    display: block;
+}
+#all_customers{
+    float: left;
+    font-size: 1.2em;
+    width: 87%;
+    padding-left: 4%;
+    margin-left: -24px;
+    display:block;
+}
+.forgot-password{
+    border: 2px solid #FFFFFF;
+    border-radius: 12px;
+    height: 25%;
+    margin: 3% 2% 2% 31%;
+    width: 37%;
+    box-shadow: 10px 10px 30px #DBDBDB;
+}
+.default-hidden{
+    display:none;
+}
+.toggle-btn{
+    margin-left: 39%;
+}
+
+/* ---------Staff's and Customer Profile--------- */
+.staff-body {
+    margin-top: 40px;
+    text-align: left;
+    font-size: 14px;
+    font-family: "Lucida Grande",Helvetica,Arial,Verdana,sans-serif;
+    margin-left: 2%;
+}
+#calendar {
+    float: right;
+    margin: -69px 0 0 28%;
+    position: absolute;
+    width: 700px;
+    /*animation:mymove 2s infinite;*/
+    -webkit-animation:mymove 2s; /*Safari and Chrome*/
+}
+.fc-day {
+   /* background-color: #1B999B;
+    box-shadow: -16px -16px 17px #81EFD2;*/
+}
+.welcome-div{
+    margin-left:3%;
+}
+#calendar_customer {
+    margin: -42px 0 0 90px;
+    width: 700px;
+}
+.staff-dropdown{
+    margin-left: 0;
+    margin-top: 0;
+    width: 146px;
+}
+.hide{
+    display: none;
+}
+.show{
+    display: block;
+}
+#appointments{
+    font-size: 17px;
+    margin-left: 0;
+    margin-top: 1%;
+    width: 99%;
+}
+/*.appointment-div{
+    font: 17px 'LeagueGothicRegular';
+    width: 107%;
+}*/
+#meetings {
+    font-size: 17px;
+    margin-left: 31px;
+    margin-top: 3%;
+    width:395px;
+    /*display:none;*/
+}
+.bg-colrs{
+    background-color: #000000;
+    color: #FF0000;
+    height: 100%;
+    overflow: hidden;
+    width: 100%;
+}
+input[type="email"], input[type="text"], input[type="password"], textarea {
+    -webkit-transition: all 0.30s ease-in-out;
+    -moz-transition: all 0.30s ease-in-out;
+    -ms-transition: all 0.30s ease-in-out;
+    -o-transition: all 0.30s ease-in-out;
+    outline: none; padding: 3px 0px 3px 3px;
+    margin: 5px 1px 3px 0px; border: 1px solid #DDDDDD;
+}
+input[type="email"]:focus, input[type="text"]:focus,input[type="password"]:focus,textarea:focus {
+    box-shadow: 0 0 5px rgba(81, 203, 238, 1);
+    padding: 3px 0px 3px 3px;
+    margin: 5px 1px 3px 0px;
+    border: 1px solid rgba(81, 203, 238, 1);
+}
+.inner-signin-div h2 {
+    margin-bottom: 10%;
+}
+label{
+    font-weight:lighter !important;
+}
+.btn.btn-small.btn-success {
+    height: 35px;
+    margin-top: 20px;
+    width: 100px;
+}
+.error {
+    box-shadow: 0 0 5px red;
+    border: 1px solid red;
+}
+.signup_links {
+    padding-top: 60px;
+}
+.signup_links a {
+    font-size:20px;
+}
+.forgot_password {
+    margin-top:5px;
+}
+.forgot_password a {
+    font-size:12px;
+}
+@keyframes mymove
+{
+    from {left:-700px;}
+    to {left:200px;}
+}
+
+@-webkit-keyframes mymove /*Safari and Chrome*/
+{
+    from {left:-700px;}
+    to {left:200px;}
+}
+
+#event_error{
+    color: red;
+    display: none;
+}
+.signed-out a {
+    font-family: calibri;
+    font-size: 18px;
+    text-decoration: none;
+}
+.login-role > h3 {
+    font-family: calibri;
+    font-size: 25px;
+    margin: 10px;
+}
+.main-body ul {
+    margin: 40px 0 100%;
+}
+.new-staff-inner {
+    margin-left: 70px;
+}
+.new-staff {
+    margin-bottom: 50px;
+    margin-top:26px;
+}
+.new-staff-inner #new_user {
+    height: 280px;
+}
+#meetings ul, #meetings li
+{
+    padding:0px !important;
+    margin:0px !important;
+}
+.left-meeting-div{
+    height: 500px;
+    margin-left: 241px;
+    width: 715px;
+    margin-top: -97px;
+}
+.left-aligned{
+    background-color: #C5EFF7;
+    height: 540px;
+    width: 152px;
+    margin-top: -26px;
+}
+/*For the left div allignment for appointments*/
+.appointment-left-aligned{
+    background-color: #C5EFF7;
+    height: 540px;
+    margin: -26px;
+    width: 524px;
+}
+.inner-appointments{
+    margin:0 0 0 8px;
+}
+
+.button_to {
+    width: 75px;
+}
+.info-table{
+    width: 990px;
+
+}
+.left-admin-btn {
+    margin: 7px auto auto 37px;
+}
+.left-div-staff {
+    margin: 5px auto auto 20px;
+}
+.admins-profile{
+    height: 492px;
+    margin: 5px auto auto 137px;
+    width: 1131px;
+}
+.admins-inner-profile{
+    margin: 34px auto auto 193px;
+}
+.admins-inner-profile > h4 {
+    line-height: 1.8;
+}
+.no-style{
+    text-decoration: none;
+    color:black;
+}
+a:hover,
+a:focus {
+  color: black;
+  text-decoration: none;
+}
+.table-small{
+    width:700px;
+}
+
+/*----------Change password----------*/
+.change-password{
+    margin: 20px auto;
+    width: 650px;
+}
+.inner-div-change-password{
+    margin: 20px auto;
+    width: 426px;
+}
+.back-to-admin{
+    margin-left: 70px;
+    width: 100px;
+}
+.main-staff-profile{
+    float: right;
+    height: 552px;
+    margin: -551px auto auto 0;
+    width: 1148px;
+}
+.inner-staff-profile, .show-meeting-div{
+    margin: 12px;
+    width: 90%;
+}
+.display-block{
+    display:block;
+}
+.staff-info, .customer-info{
+    height: auto;
+    margin: -75px auto auto 205px;
+    width: 500px;
+}
+.main-customer-body{
+    float: right;
+    height: 535px;
+    margin: -541px 0 0;
+    width: 1150px;
+}
+.customer-inner-div{
+    height: auto;
+    margin: 0 0 0 145px;
+    width: 900px;
+}
+.customer-appointment-div{
+    height: auto;
+    margin-left: 12px;
+    margin-top: 0;
+    width: 715px;
+}
