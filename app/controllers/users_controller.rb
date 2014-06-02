@@ -70,9 +70,9 @@ class UsersController < ApplicationController
       @staffs = User.get_all_staffs
       @my_staffs = @staffs.collect {|t| [t.firstname+" "+t.lastname, t.id] }
       @my_appointments = Task.get_all_appointments(current_user[:id])
-      @staffs_name_for_appointment = @my_appointments. map{|t| {id: t.id, staff_name: get_staffs_name(t.id)}}
-      @Events = @my_appointments. map{|i| {event_name: get_events_name(i.id)}}
-      @start_day = @my_appointments. map { |t| {start: get_start_date(t.id)}}
+      @staffs_name_for_appointment = @my_appointments. map{|t| {id: t.id, staff_name: User.get_staffs_name(t.id)}}
+      @Events = @my_appointments. map{|i| {event_name: Task.get_events_name(i.id)}}
+      @start_day = @my_appointments. map { |t| {start: Task.get_start_date(t.id)}}
       @last_time = @user[:last_sign_in_at].strftime('%I:%M:%S %p')
       @last_date = @user[:last_sign_in_at].strftime('%d/%m/%y')
     end
@@ -81,9 +81,9 @@ class UsersController < ApplicationController
       @user = current_user
       @event = Task.new
       @my_appointments = Task.get_appontments_with_customer(current_user[:id])
-      @customers_name_for_appointment = @my_appointments.map{ |t| { customers_name: get_customers_name(t.customer_id)}}
-      @Events = @my_appointments. map{|i| {event_name: get_events_name(i.id)}}
-      @start_day = @my_appointments. map { |t| {start: get_start_date(t.id)}}
+      @customers_name_for_appointment = @my_appointments.map{ |t| { customers_name: User.get_customers_name(t.customer_id)}}
+      @Events = @my_appointments. map{|i| {event_name: Task.get_events_name(i.id)}}
+      @start_day = @my_appointments. map { |t| {start: Task.get_start_date(t.id)}}
       @time = @user[:last_sign_in_at].strftime('%I:%M:%S %p')
       @date = @user[:last_sign_in_at].strftime('%d/%m/%y')
     end
@@ -168,26 +168,6 @@ class UsersController < ApplicationController
 
     end
 
-    def delete_event
-       Task.where(id: params[:task_id]).first.destroy
-       render nothing:true
-    end
-
-    def staffs_name_from_user(user_id)
-      uid = @assigned.first[:user_id]
-      @name = User.select('firstname', 'lastname').where(id: uid)
-      @name.first[:firstname] + " " + @name.first[:lastname]
-    end
-    def get_customers_name(user_id)
-      name = User.select('firstname', 'lastname').where(id: user_id)
-      customer_name = name.first[:firstname].to_s + " ".to_s + name.first[:lastname].to_s
-    end
-
-    def get_events_name(task_id)
-      event = Task.select('event').where(id: task_id)
-      eventname = event.first[:event]
-    end
-
     def get_staffs_name(task_id)
       uid = Task.select('user_id').where(id: task_id).first
       staff_id=uid[:user_id]
@@ -195,17 +175,9 @@ class UsersController < ApplicationController
       staff_name = name.first[:firstname].to_s.capitalize + " ".to_s + name.first[:lastname].to_s.capitalize
     end
 
-    def get_start_date(task_id)
-      task = Task.where(id: task_id)
-      splits = task.first[:start_date].split
-      start = splits[1] + ", " + splits[2]
-    end
+    
 
-    def destroy
-      test = Task.where(id: params[:id])
-      test.first.update_attributes(customer_id: nil)
-      redirect_to profile_users_path
-    end
+    
 
     def calculate_time start_date
       start = start_date

@@ -17,14 +17,37 @@ class Task < ActiveRecord::Base
 		 Task.select('id').where(customer_id: current_user_id)
 	end
 
+	def delete_event
+       Task.where(id: params[:task_id]).first.destroy
+       render nothing:true
+    end
+
 	def self.get_appontments_with_customer(current_staff_id)
 		@tasks = self.where(user_id: current_staff_id)
 		@tasks.where("customer_id NOT NULL")
 
 	end
+
 	def self.get_data(task_id)
 		@test = self.select('customer_id').where(id: task_id)
 		@test.first[:customer_id].blank?
 	end
+
+	def destroy
+      test = Task.where(id: params[:id])
+      test.first.update_attributes(customer_id: nil)
+      redirect_to profile_users_path
+    end
+
+	def self.get_start_date(task_id)
+      task = Task.where(id: task_id)
+      splits = task.first[:start_date].split
+      start = splits[1] + ", " + splits[2]
+    end
+
+	def self.get_events_name(task_id)
+      event = Task.select('event').where(id: task_id)
+      eventname = event.first[:event]
+    end
 
 end

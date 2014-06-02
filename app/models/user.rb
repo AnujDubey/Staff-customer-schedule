@@ -68,6 +68,17 @@ class User < ActiveRecord::Base
     User.select('id','firstname','lastname','email').where(role_id: customer_id) 
   end
 
+  def self.staffs_name_from_user(user_id)
+      uid = @assigned.first[:user_id]
+      @name = User.select('firstname', 'lastname').where(id: uid)
+      @name.first[:firstname] + " " + @name.first[:lastname]
+  end
+
+  def self.get_customers_name(user_id)
+      name = User.select('firstname', 'lastname').where(id: user_id)
+      customer_name = name.first[:firstname].to_s + " ".to_s + name.first[:lastname].to_s
+  end
+
   # Update staff password after the signup confirmation.
   def update_staffs_password(password, password_confirmation)
      self.update_attributes(password:  password, password_confirmation:  password_confirmation)
